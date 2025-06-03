@@ -2,6 +2,8 @@
 
 Clone este repositório. Depois disso, faça o seguinte:
 
+Swagger da aplicação: http://localhost:8080/swagger/
+
 Verifique se a API está ativa e rodando: http://localhost:8080/current-time
 
 Métricas da API: http://localhost:8080/metrics
