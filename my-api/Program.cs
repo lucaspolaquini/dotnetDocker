@@ -20,7 +20,7 @@ app.MapGet("/current-time", () =>
 {
     var utcNow = DateTime.UtcNow;
     var localNow = DateTime.Now;
-    string greeting = utcNow.Hour switch
+    string greeting = localNow.Hour switch
     {
         >= 5 and < 12 => "Bom dia!",
         >= 12 and < 18 => "Boa tarde!",
