@@ -1,18 +1,24 @@
-version: '3.4'
+version: '3.9'
 
 services:
   my-api:
-    image: my-api
-    ports:
-      - 8080:8080
     build:
       context: .
       dockerfile: my-api/Dockerfile
+    image: my-api
+    ports:
+      - "8080:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
     networks:
       - mynw
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
 
   prometheus:
     image: prom/prometheus
@@ -22,8 +28,15 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
+    read_only: true
     networks:
       - mynw
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
 
   grafana:
     image: grafana/grafana
@@ -37,6 +50,12 @@ services:
       - prometheus
     networks:
       - mynw
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
 
 networks:
   mynw:
