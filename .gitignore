@@ -41,7 +41,8 @@ ScaffoldingReadMe.txt
 *~
 CodeCoverage/
 grafana/
-mysql-data/
+mysql_data/
+mysql-data/*
 
 # MSBuild Binary and Structured Log
 *.binlog
