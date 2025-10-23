@@ -44,6 +44,11 @@ grafana/
 mysql_data/
 mysql-data/*
 
+# Environment variables
+.env
+.env.*
+
+
 # MSBuild Binary and Structured Log
 *.binlog
 
